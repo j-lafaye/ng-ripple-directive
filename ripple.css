@@ -1,0 +1,153 @@
+*.ripple {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  border-radius: inherit;
+}
+
+.ripple:after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  content: '';
+  background: linear-gradient(-90deg, var(--app-color-ripple) 1px, transparent 1px), linear-gradient(var(--app-color-ripple) 1px, transparent 1px);
+  background-size: 2px 2px, 2px 2px;
+  background-repeat: repeat;
+  animation: ripple-fade-in-and-out 0.8s ease-in-out;
+  -webkit-animation: ripple-fade-in-and-out 0.8s ease-in-out;
+}
+
+.ripple > .ripple-wave {
+  position: absolute;
+  backface-visibility: hidden;
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+  border-radius: 50%;
+  opacity: 0.26;
+  background: radial-gradient(circle at 50% 50%, var(--app-color-ripple) 0%, transparent 50%, transparent 100%);
+  animation: ripple 0.8s forwards;
+  -webkit-animation: ripple 0.8s forwards;
+}
+
+.ripple[color='primary']:after,
+.ripple[color='primary'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-primary);
+}
+
+.ripple[color='secondary']:after,
+.ripple[color='secondary'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-secondary);
+}
+
+.ripple[color='background']:after,
+.ripple[color='background'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-on-background);
+}
+
+.ripple[color='surface']:after,
+.ripple[color='surface'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-on-surface);
+}
+
+.ripple[color='error']:after,
+.ripple[color='error'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-error);
+}
+
+.ripple[color='info']:after,
+.ripple[color='info'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-info);
+}
+
+.ripple[color='success']:after,
+.ripple[color='success'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-success);
+}
+
+.ripple[color='warning']:after,
+.ripple[color='warning'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-warning);
+}
+
+.ripple[color='danger']:after,
+.ripple[color='danger'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-danger);
+}
+
+.ripple[color='light']:after,
+.ripple[color='light'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-light);
+}
+
+.ripple[color='medium']:after,
+.ripple[color='medium'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-medium);
+}
+
+.ripple[color='dark']:after,
+.ripple[color='dark'] > .ripple-wave {
+  --app-color-ripple: var(--app-color-dark);
+}
+
+*.static-ripple {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  opacity: 0.26;
+  border-radius: inherit;
+  background: linear-gradient(-90deg, var(--app-color-ripple) 1px, transparent 1px), linear-gradient(var(--app-color-ripple) 1px, transparent 1px);
+  background-size: 2px 2px, 2px 2px;
+  background-repeat: repeat;
+  animation: ripple-fade-in 0.15s ease-in-out;
+}
+
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: scale(24);
+  }
+}
+
+@keyframes ripple-fade-in-and-out {
+  0% {
+    opacity: 0;
+  }
+  
+  50% {
+    opacity: 0.26;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ripple-fade-in {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 0.26;
+  }
+}
+
+@keyframes ripple-fade-out {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
